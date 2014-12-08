@@ -2,7 +2,6 @@ package com.everbridge.wing.MqManage;
 
 
 import org.apache.commons.configuration.XMLConfiguration;
-import java.util.Map;
 
 
 public class MqBase
@@ -13,6 +12,7 @@ public class MqBase
     public static boolean MQ_DURABLE;
     public static String  MQ_EXCHANGE_TYPE;
     public static boolean MQ_CONSUME_ACK;
+    public static int MQ_UNBIND_TIMEOUT;
 
     public static int HIGH_PRIOR_THRESHOLD;
     public static int BIG_SCALE_THRESHOLD;

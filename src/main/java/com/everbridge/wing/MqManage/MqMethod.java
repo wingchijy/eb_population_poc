@@ -62,6 +62,8 @@ public class MqMethod
 
             connection = factory.newConnection(addresses);
         }
+
+        channel = connection.createChannel();
     }
 
 
@@ -81,7 +83,7 @@ public class MqMethod
     /*
        Queue.
     */
-    public AMQP.Queue.DeclareOk createQueue(String queueName) throws Exception
+    public AMQP.Queue.DeclareOk createQueue(String queueName) throws IOException
     {
 //        Map<String, Object> args = null;
 //        args = new HashMap<String, Object>();
@@ -96,7 +98,7 @@ public class MqMethod
     }
 
 
-    public AMQP.Queue.BindOk exchangeBindQueue(String exchangeName, String queueName, String routingKey) throws Exception
+    public AMQP.Queue.BindOk exchangeBindQueue(String exchangeName, String queueName, String routingKey) throws IOException
     {
         return channel.queueBind(
                 queueName,
@@ -104,6 +106,14 @@ public class MqMethod
                 routingKey );
     }
 
+    public AMQP.Queue.UnbindOk unbindQueue(String exchangeName, String queueName, String routingKey) throws IOException
+    {
+        return channel.queueUnbind(
+                queueName,
+                exchangeName,
+                routingKey,
+                null);
+    }
 
     /*
         Produce.
@@ -125,7 +135,7 @@ public class MqMethod
           直到调用channel.basicAck(deliveryTag, false); queue上的消息才会被清除
           而且，在当前连接断开以前，其它客户端将不能收到此queue上的消息.
     */
-    public GetResponse pollingConsume(String queueName) throws Exception
+    public GetResponse pollingConsume(String queueName) throws IOException
     {
         GetResponse response = channel.basicGet(
                 queueName,

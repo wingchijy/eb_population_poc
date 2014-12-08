@@ -5,12 +5,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class MqConsumer
 {
     private MqMethod mqMethod;
+    private MqTask mqTask;
 
     private static Logger logger = LoggerFactory.getLogger(MqConsumer.class);
 
@@ -21,12 +21,18 @@ public class MqConsumer
         mqMethod.connect();
     }
 
+    public void init(MqBase.Scale scaleType)
+    {
+        mqTask = new MqTask();
+        mqTask.setScaleType(scaleType);
+    }
+
 
     /*
     */
     public MqConfig.Result consume() throws Exception
     {
-        MqResource res = MqManager.getInstance().getConsumeMqResource();
+        MqResource res = MqManager.getInstance().getConsumeMqResource(mqTask);
         if( res == null ){
             return MqConfig.Result.NoMessageToConsume;
         }

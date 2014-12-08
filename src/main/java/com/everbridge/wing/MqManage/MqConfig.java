@@ -45,9 +45,21 @@ public class MqConfig extends MqBase
         MQ_DURABLE = xmlConfig.getBoolean("MqParams/durable");
         MQ_EXCHANGE_TYPE = xmlConfig.getString("MqParams/exchangeType");
         MQ_CONSUME_ACK = xmlConfig.getBoolean("MqParams/consumeAck");
+        MQ_UNBIND_TIMEOUT = xmlConfig.getInt("MqParams/unbindTimeout");
 
-        logger.info( String.format("MqParams:[hostCount=%s|durable=%s|exchangeType=%s|ack=%s]",
-                MQ_HOSTS.length, MQ_DURABLE, MQ_EXCHANGE_TYPE, MQ_CONSUME_ACK) );
+        logger.info( String.format("Mq-params:[hostCount=%d | durable=%s | " +
+                        "exchangeType=%s | consumeAck=%s | unbindTimeout=%d]",
+                MQ_HOSTS.length, MQ_DURABLE, MQ_EXCHANGE_TYPE,
+                MQ_CONSUME_ACK, MQ_UNBIND_TIMEOUT) );
+
+
+        HIGH_PRIOR_THRESHOLD = xmlConfig.getInt( "MqParams/highPriorThreshold" );
+        BIG_SCALE_THRESHOLD = xmlConfig.getInt( "MqParams/bigScaleThreshold" );
+        SMALL_SCALE_THRESHOLD = xmlConfig.getInt( "MqParams/smallScaleThreshold" );
+
+        logger.info( String.format("Mq-params:[highPriorThreshold=%d | " +
+                        "bigScaleThreshold=%d | smallScaleThreshold=%d]",
+                HIGH_PRIOR_THRESHOLD, BIG_SCALE_THRESHOLD, SMALL_SCALE_THRESHOLD) );
     }
 
     public void loadResourceParams(String name) throws Exception
@@ -64,8 +76,8 @@ public class MqConfig extends MqBase
         params.setQueuePrefix(xmlConfig.getString(String.format(
                 "MqResourceParams/resourceGroup[name = '%s']/queuePrefix", name)));
 
-        params.setMaxQueueCount(xmlConfig.getInt(String.format(
-                "MqResourceParams/resourceGroup[name = '%s']/maxQueueCount", name)));
+        params.setQueueCount(xmlConfig.getInt(String.format(
+                "MqResourceParams/resourceGroup[name = '%s']/queueCount", name)));
 
         params.setMaxHighPriorCount(xmlConfig.getInt(String.format(
                 "MqResourceParams/resourceGroup[name = '%s']/maxHighPriorCount", name)));
@@ -73,8 +85,17 @@ public class MqConfig extends MqBase
         params.setMaxMsgCountInQueue(xmlConfig.getInt(String.format(
                 "MqResourceParams/resourceGroup[name = '%s']/maxMsgCountInQueue", name)));
 
-        params.setMaxUnbindTimeout(xmlConfig.getInt(String.format(
-                "MqResourceParams/resourceGroup[name = '%s']/maxUnbindTimeout", name)));
+        params.setMaxConsumersOneHighQueue(xmlConfig.getInt(String.format(
+                "MqResourceParams/resourceGroup[name = '%s']/maxConsumersOneHighQueue", name)));
+
+        params.setMaxConsumersOneNormalQueue(xmlConfig.getInt(String.format(
+                "MqResourceParams/resourceGroup[name = '%s']/maxConsumersOneNormalQueue", name)));
+
+        logger.info( String.format("ResourceParams:[scale=%s | exchangeName=%s | queueName=%s | queueCount=%d | " +
+                        "maxHighPriorCount=%s | maxMsgCountInQueue=%d  | maxConsumersOneHighQueue=%d | maxConsumersOneNormalQueue=%d]",
+                params.getScale().getName(), params.getExchangeName(), params.getQueuePrefix(), params.getQueueCount(),
+                params.getMaxHighPriorCount(), params.getMaxMsgCountInQueue(), params.getMaxConsumersOneHighQueue(),
+                params.getMaxConsumersOneNormalQueue()) );
 
         resourceParamsGroup.add(params);
     }

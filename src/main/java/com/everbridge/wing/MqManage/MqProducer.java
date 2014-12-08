@@ -26,13 +26,13 @@ public class MqProducer
         2.get mq-resource.
         3.send message.
     */
-    public MqConfig.Result publish( String taskName, int taskPrior,
-                         int taskScale, ArrayList<Object> messages ) throws Exception
+    public MqConfig.Result publish( String taskName, int taskPrior, int taskScale, ArrayList<Object> messages ) throws Exception
     {
-        if( messages.size() == 0 )
+        if( messages==null || messages.size() == 0 )
             return MqConfig.Result.NoMessageToSend;
 
-        MqTask task = new MqTask( taskName, taskPrior, taskScale, messages );
+        MqTask task = new MqTask();
+        task.init( taskName, taskPrior, taskScale, messages );
 
         MqResource res = MqManager.getInstance().getMqResource(task);
         if( res == null ){
@@ -48,6 +48,14 @@ public class MqProducer
         }
 
         return MqConfig.Result.Success;
+    }
+
+    public MqConfig.Result unbind( String taskName, int taskPrior, int taskScale ) throws Exception
+    {
+        MqTask task = new MqTask();
+        task.init( taskName, taskPrior, taskScale, null );
+
+        return MqManager.getInstance().unbindMqResource(task);
     }
 
 }

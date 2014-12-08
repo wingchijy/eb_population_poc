@@ -11,20 +11,21 @@ public class MqTask
     private ArrayList<byte[]> messages;
 
 
-    public MqTask(String taskName, int priorValue,
-                  int scaleValue,  ArrayList<Object> messages)
+    public void init(String taskName, int priorValue,
+                  int scaleValue,  ArrayList<Object> messages) throws Exception
     {
         this.name = taskName;
 
-        this.priorType = MqConfig.Priority.getPriority(priorValue);
+        setPriorType(priorValue);
 
-        this.scaleType = MqConfig.Scale.getScale(scaleValue);
+        setScaleType(scaleValue);
 
         this.topic = String.format("%s-%s",
                 this.scaleType.getName(),
                 this.priorType.getName() );
 
-        setMessages(messages);
+        if(messages != null)
+            setMessages(messages);
     }
 
 
@@ -32,8 +33,20 @@ public class MqTask
         return scaleType;
     }
 
+    public void setScaleType(int scaleValue) {
+        this.scaleType = MqConfig.Scale.getScale(scaleValue);
+    }
+
+    public void setScaleType(MqConfig.Scale type) {
+        this.scaleType = type;
+    }
+
     public MqConfig.Priority getPriorType() {
         return priorType;
+    }
+
+    public void setPriorType(int priorValue) {
+        this.priorType = MqConfig.Priority.getPriority(priorValue);
     }
 
     public String getTopic(){

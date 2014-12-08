@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class MqResourceGroup
 {
     private MqResourceParams params;
-    private ArrayList<MqResource> resources;
+    private ArrayList<MqResource> resources = new ArrayList<MqResource>();
     private int currentHighPriorCount;
 
 
@@ -21,6 +21,10 @@ public class MqResourceGroup
 
     public ArrayList<MqResource> getResources() {
         return resources;
+    }
+
+    public void addResource(MqResource resource) {
+        resources.add(resource);
     }
 
     public int getCurrentHighPriorCount() {

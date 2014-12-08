@@ -7,10 +7,12 @@ public class MqResourceParams
     private String exchangeName;
     private String queuePrefix;
 
-    private int maxQueueCount;
+    private int queueCount;
     private int maxHighPriorCount;
     private int maxMsgCountInQueue;
     private int maxUnbindTimeout;
+    private int maxConsumersOneHighQueue;
+    private int maxConsumersOneNormalQueue;
 
 
     public MqConfig.Scale getScale() {
@@ -37,12 +39,12 @@ public class MqResourceParams
         this.queuePrefix = queuePrefix;
     }
 
-    public int getMaxQueueCount() {
-        return maxQueueCount;
+    public int getQueueCount() {
+        return queueCount;
     }
 
-    public void setMaxQueueCount(int maxQueueCount) {
-        this.maxQueueCount = maxQueueCount;
+    public void setQueueCount(int queueCount) {
+        this.queueCount = queueCount;
     }
 
     public int getMaxHighPriorCount() {
@@ -69,5 +71,21 @@ public class MqResourceParams
         this.maxUnbindTimeout = maxUnbindTimeout;
     }
 
+
+    public int getMaxConsumersOneHighQueue() {
+        return maxConsumersOneHighQueue;
+    }
+
+    public void setMaxConsumersOneHighQueue(int maxConsumersOneHighQueue) {
+        this.maxConsumersOneHighQueue = maxConsumersOneHighQueue;
+    }
+
+    public int getMaxConsumersOneNormalQueue() {
+        return maxConsumersOneNormalQueue;
+    }
+
+    public void setMaxConsumersOneNormalQueue(int maxConsumersOneNormalQueue) {
+        this.maxConsumersOneNormalQueue = maxConsumersOneNormalQueue;
+    }
 }
 
