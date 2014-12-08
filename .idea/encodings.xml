@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqBase.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqConfigLoad.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqConsumer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqExchange.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqInterface.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqMessage.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqMethod.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqParameter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqPriority.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqProducer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqQueue.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqResource.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqResourceConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqResourceGroup.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqResourceParams.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqResourcePoll.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqResult.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqScale.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqTask.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqTaskProperty.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/everbridge/wing/MqManage/MqWorkerFactory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mqConfig.xml" charset="UTF-8" />
+  </component>
+</project>
+

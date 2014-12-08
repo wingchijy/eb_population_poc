@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<config>
+
+    <MqParams>
+        <hosts>
+            <host>127.0.0.1</host>
+            <!--<host>10.68.52.201</host>-->
+            <!--<host>10.68.52.202</host>-->
+            <!--<host>10.68.52.203</host>-->
+        </hosts>
+        <durable>false</durable>
+        <exchangeType>topic</exchangeType>
+        <consumeAck>false</consumeAck>
+    </MqParams>
+
+
+    <MqResourceParams>
+        <resourceGroup>
+            <name>bigGroup</name>
+            <scale>big</scale>
+            <exchangeName>exchange-bigGroup</exchangeName>
+            <queuePrefix>bigGroup</queuePrefix>
+            <maxQueueCount>5</maxQueueCount>
+            <maxHighPriorCount>2</maxHighPriorCount>
+            <maxMsgCountInQueue>5000</maxMsgCountInQueue>
+            <maxUnbindTimeout>100</maxUnbindTimeout>
+        </resourceGroup>
+        <resourceGroup>
+            <name>middleGroup</name>
+            <scale>middle</scale>
+            <exchangeName>exchange-middleGroup</exchangeName>
+            <queuePrefix>middleGroup</queuePrefix>
+            <maxQueueCount>4</maxQueueCount>
+            <maxHighPriorCount>2</maxHighPriorCount>
+            <maxMsgCountInQueue>5000</maxMsgCountInQueue>
+            <maxUnbindTimeout>100</maxUnbindTimeout>
+        </resourceGroup>
+        <resourceGroup>
+            <name>smallGroup</name>
+            <scale>small</scale>
+            <exchangeName>exchange-smallGroup</exchangeName>
+            <queuePrefix>smallGroup</queuePrefix>
+            <maxQueueCount>3</maxQueueCount>
+            <maxHighPriorCount>1</maxHighPriorCount>
+            <maxMsgCountInQueue>5000</maxMsgCountInQueue>
+            <maxUnbindTimeout>100</maxUnbindTimeout>
+        </resourceGroup>
+    </MqResourceParams>
+
+</config>
